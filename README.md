@@ -32,11 +32,12 @@ import {
   expirableLocalStorage,
   expirableSessionStorage,
 } from "expirable-storage";
+const expires = 900; // 900 seconds (15 minutes)
 
-expirableLocalStorage.setItem("key1", "value1", 1000);
+expirableLocalStorage.setItem("key1", "value1", expires);
 expirableLocalStorage.getItem("key1");
 
-expirableSessionStorage.setItem("key2", "value2", 1000);
+expirableSessionStorage.setItem("key2", "value2", expires);
 expirableSessionStorage.getItem("key2");
 ```
 
