@@ -106,6 +106,7 @@ const getUnexpired = (storage: Storage, key: string) => {
       }
     } catch (ex) {
       // Throws a `SyntaxError` if the string to parse is not valid JSON.
+      storage.removeItem(key);
     }
   }
 
