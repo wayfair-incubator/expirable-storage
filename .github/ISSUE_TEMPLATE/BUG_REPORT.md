@@ -1,10 +1,9 @@
 ---
 name: Bug Report
 about: Report a bug to help us improve
-title: ''
-labels: ''
-assignees: ''
-
+title: ""
+labels: ""
+assignees: ""
 ---
 
 ## Description
@@ -31,6 +30,5 @@ Please provide the version number where this issue was encountered.
 
 ## Checklist
 
-<!-- TODO: Update the link below to point to your project's contributing guidelines -->
-- [ ] I have read the [contributing guidelines](https://github.com/wayfair-incubator/oss-template/blob/main/CONTRIBUTING.md)
+- [ ] I have read the [contributing guidelines](https://github.com/wayfair-incubator/expirable-storage/blob/main/CONTRIBUTING.md)
 - [ ] I have verified this does not duplicate an existing issue
