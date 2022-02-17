@@ -2,6 +2,9 @@
 
 [![OSS Template Version](https://img.shields.io/badge/OSS%20Template-0.3.5-7f187f.svg)](https://github.com/wayfair-incubator/oss-template/blob/main/CHANGELOG.md)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](CODE_OF_CONDUCT.md)
+[![Build Status](https://github.com/wayfair-incubator/expirable-storage/actions/workflows/build.yml/badge.svg)](https://github.com/wayfair-incubator/expirable-storage/actions/workflows/build.yml)
+[![NPM version](https://img.shields.io/npm/v/expirable-storage.svg?logo=npm)](https://npmjs.org/package/expirable-storage)
+[![NPM downloads](https://img.shields.io/npm/dm/expirable-storage.svg?style=flat)](https://npmjs.org/package/expirable-storage)
 
 ## About The Project
 
