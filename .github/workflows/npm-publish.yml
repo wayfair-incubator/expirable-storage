@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-node@v2.5.0
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install
+      - run: npm ci
       - run: npm run lint --if-present
       - run: npm run build --if-present
       - run: npm test --if-present
@@ -35,7 +35,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: npm install
+      - run: npm ci
       - run: npm run build --if-present
       - run: npm publish --access public
         env:
