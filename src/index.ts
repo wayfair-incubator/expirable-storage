@@ -42,10 +42,11 @@ export const createExpirableStorage = ({
     const data = { value, ttl: Date.now() + ttl * 1000 };
     try {
       storage.setItem(`${KEY_PREFIX}${key}`, JSON.stringify(data));
-    } catch {
+    } catch (ex) {
       // Throws a `TypeError` exception when a circular reference is found.
       // Throws a `TypeError` exception when trying to stringify a BigInt value.
       // Throws a `QuotaExceededError` exception if the storage is full.
+      console.error(ex);
       return false;
     }
     return true;
@@ -108,8 +109,9 @@ const getUnexpired = (storage: Storage, key: string) => {
         // Return the value if it is not expired.
         return data.value;
       }
-    } catch {
+    } catch (ex) {
       // Throws a `SyntaxError` if the string to parse is not valid JSON.
+      console.error(ex);
       storage.removeItem(key);
     }
   }
