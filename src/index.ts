@@ -42,6 +42,9 @@ export const createExpirableStorage = ({
     try {
       storage.setItem(`${KEY_PREFIX}${key}`, JSON.stringify(data));
     } catch {
+      // Throws a `TypeError` exception when a circular reference is found.
+      // Throws a `TypeError` exception when trying to stringify a BigInt value.
+      // Throws a `QuotaExceededError` exception if the storage is full.
       return false;
     }
     return true;
