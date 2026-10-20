@@ -22,6 +22,6 @@ export const expirableSessionStorage: ExpirableStorage;
  * @return An instance of expirable data storage.
  */
 export function createExpirableStorage({
-  autoFlushInterval: number,
-  storage: Storage,
+  autoFlushInterval,
+  storage,
 }: ExpirableStorageOptions): ExpirableStorage;
