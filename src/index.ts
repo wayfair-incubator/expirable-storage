@@ -21,6 +21,7 @@ const AUTO_FLUSH_KEY = "__REACT_EXPIRABLE_STORAGE__";
  */
 const KEY_PREFIX = "EXPIRABLE_";
 
+const global = Function("return this")() as typeof window;
 const root = typeof window !== "undefined" ? window : global;
 const isSupported = Object.prototype.hasOwnProperty.call(root, "localStorage");
 const localStorage = isSupported ? root.localStorage : internalStorage;
@@ -30,7 +31,7 @@ const sessionStorage = isSupported ? root.sessionStorage : internalStorage;
  * Creates an instance of expirable data storage.
  * @param options.autoFlushInterval An interval in seconds to flush expired
  *     values. Default 900 (15 minutes).
- * @param options.storage n instance of Storage class. Default `localStorage`.
+ * @param options.storage An instance of Storage class. Default `localStorage`.
  * @return An instance of expirable data storage.
  */
 export const createExpirableStorage = ({
@@ -38,13 +39,14 @@ export const createExpirableStorage = ({
   storage,
 }: ExpirableStorageOptions) => {
   const setItem = (key: string, value: unknown, ttl: number) => {
-    const data = { value: value, ttl: Date.now() + ttl * 1000 };
+    const data = { value, ttl: Date.now() + ttl * 1000 };
     try {
       storage.setItem(`${KEY_PREFIX}${key}`, JSON.stringify(data));
     } catch (ex) {
       // Throws a `TypeError` exception when a circular reference is found.
       // Throws a `TypeError` exception when trying to stringify a BigInt value.
       // Throws a `QuotaExceededError` exception if the storage is full.
+      console.error(ex);
       return false;
     }
     return true;
@@ -54,7 +56,8 @@ export const createExpirableStorage = ({
     autoFlushInterval &&
     !Object.prototype.hasOwnProperty.call(root, AUTO_FLUSH_KEY)
   ) {
-    root[AUTO_FLUSH_KEY] = setInterval(flush, autoFlushInterval * 1000);
+    const record = root as unknown as Record<string, unknown>;
+    record[AUTO_FLUSH_KEY] = setInterval(flush, autoFlushInterval * 1000);
     flush();
   }
 
@@ -94,7 +97,7 @@ const forEachExpirable = (storage: Storage, fn: (key: string) => void) => {
 const getUnexpired = (storage: Storage, key: string) => {
   const value = storage.getItem(key);
 
-  if (null !== value) {
+  if (value !== null) {
     try {
       const data = JSON.parse(value);
       if (Date.now() > data.ttl) {
@@ -106,6 +109,7 @@ const getUnexpired = (storage: Storage, key: string) => {
       }
     } catch (ex) {
       // Throws a `SyntaxError` if the string to parse is not valid JSON.
+      console.error(ex);
       storage.removeItem(key);
     }
   }
