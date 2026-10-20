@@ -21,7 +21,8 @@ const AUTO_FLUSH_KEY = "__REACT_EXPIRABLE_STORAGE__";
  */
 const KEY_PREFIX = "EXPIRABLE_";
 
-const root = typeof window !== "undefined" ? window : (Function("return this")() as typeof window);
+const global = Function("return this")() as typeof window;
+const root = typeof window !== "undefined" ? window : global;
 const isSupported = Object.prototype.hasOwnProperty.call(root, "localStorage");
 const localStorage = isSupported ? root.localStorage : internalStorage;
 const sessionStorage = isSupported ? root.sessionStorage : internalStorage;
