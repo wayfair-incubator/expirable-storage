@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "webpack",
-    "lint": "eslint \"src/**/*.ts\"",
+    "lint": "eslint --config eslint.config.mjs --ext .ts ./src",
     "test": "jest --coverage"
   },
   "keywords": [
