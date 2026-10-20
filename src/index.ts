@@ -52,10 +52,12 @@ export const createExpirableStorage = ({
     return true;
   };
 
-  if (
-    autoFlushInterval &&
-    !Object.prototype.hasOwnProperty.call(root, AUTO_FLUSH_KEY)
-  ) {
+  const shouldAutoFlush =
+    autoFlushInterval > 0 &&
+    typeof window !== "undefined" &&
+    !Object.prototype.hasOwnProperty.call(root, AUTO_FLUSH_KEY);
+
+  if (shouldAutoFlush) {
     const record = root as unknown as Record<string, unknown>;
     record[AUTO_FLUSH_KEY] = setInterval(flush, autoFlushInterval * 1000);
     flush();
