@@ -79,7 +79,9 @@ export const createExpirableStorage = ({
 const forEachExpirable = (storage: Storage, fn: (key: string) => void) => {
   for (let i = storage.length - 1; i >= 0; --i) {
     const key = storage.key(i);
-    key?.startsWith(KEY_PREFIX) && fn(key);
+    if (key?.startsWith(KEY_PREFIX)) {
+      fn(key);
+    }
   }
 };
 
