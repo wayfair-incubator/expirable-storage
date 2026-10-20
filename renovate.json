@@ -15,13 +15,11 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["jest", "ts-jest", "@types/jest"],
-      "matchPackagePrefixes": ["jest-"],
+      "matchPackageNames": ["jest", "ts-jest", "@types/jest", "jest-{/,}**"],
       "groupName": "Jest"
     },
     {
-      "matchPackageNames": ["eslint"],
-      "matchPackagePrefixes": ["eslint-", "@typescript-eslint/"],
+      "matchPackageNames": ["eslint", "eslint-{/,}**", "@typescript-eslint/{/,}**"],
       "groupName": "ESLint"
     },
     {
@@ -29,8 +27,7 @@
       "groupName": "TypeScript"
     },
     {
-      "matchPackageNames": ["webpack"],
-      "matchPackagePrefixes": ["webpack-"],
+      "matchPackageNames": ["webpack", "webpack-{/,}**"],
       "groupName": "Webpack"
     },
     {
