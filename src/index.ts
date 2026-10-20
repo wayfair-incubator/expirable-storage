@@ -54,7 +54,7 @@ export const createExpirableStorage = ({
     autoFlushInterval &&
     !Object.prototype.hasOwnProperty.call(root, AUTO_FLUSH_KEY)
   ) {
-    (root as Record<string, unknown>)[AUTO_FLUSH_KEY] = setInterval(
+    (root as unknown as Record<string, unknown>)[AUTO_FLUSH_KEY] = setInterval(
       flush,
       autoFlushInterval * 1000,
     );
