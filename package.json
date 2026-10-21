@@ -17,8 +17,7 @@
     "test": "jest --coverage"
   },
   "overrides": {
-    "js-yaml": "^5.0.0",
-    "typescript": "npm:@typescript/typescript6@^6.0.2"
+    "js-yaml": "^5.0.0"
   },
   "keywords": [
     "expirable-storage",
@@ -35,7 +34,7 @@
     "jest": "^30.0.0",
     "ts-jest": "^29.0.0",
     "ts-loader": "9.6.2",
-    "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "typescript": "^6.0.3",
     "webpack": "^5.68.0",
     "webpack-cli": "^7.0.0"
   }
