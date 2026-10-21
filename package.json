@@ -18,12 +18,7 @@
   },
   "overrides": {
     "js-yaml": "^5.0.0",
-    "@typescript-eslint/eslint-plugin": {
-      "typescript": "npm:@typescript/typescript6@^6.0.2"
-    },
-    "@typescript-eslint/parser": {
-      "typescript": "npm:@typescript/typescript6@^6.0.2"
-    }
+    "typescript": "npm:@typescript/typescript6@^6.0.2"
   },
   "keywords": [
     "expirable-storage",
